@@ -20,8 +20,11 @@ class Game:
     ## Ways to Win - Given a board return True if game won otherwise False
 # If all values in the row are the same
 # If all values in a column are the same
-    def win(board):
-        pass
+    def win(self):
+        print(self.board.value[0][0], self.board.value[0][1])
+        if self.board.value[0][0] == self.board.value[0][1] == self.board.value[0][2] == "X" or self.board.value[0][0] == self.board.value[0][1] == self.board.value[0][2] == "O":
+            return True
+        return False
     def run_game(self):
         print("Hello! starting a new TicTacToe Game")
         self.board.show_board()
