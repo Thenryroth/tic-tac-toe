@@ -24,6 +24,27 @@ class Game:
         print(self.board.value[0][0], self.board.value[0][1])
         if self.board.value[0][0] == self.board.value[0][1] == self.board.value[0][2] == "X" or self.board.value[0][0] == self.board.value[0][1] == self.board.value[0][2] == "O":
             return True
+
+        elif self.board.value[1][0] == self.board.value[1][1] == self.board.value[1][2] == "X" or self.board.value[1][0] == self.board.value[1][1] == self.board.value[1][2] == "O":
+            return True
+
+        elif self.board.value[2][0] == self.board.value[2][1] == self.board.value[2][2] == "X" or self.board.value[2][0] == self.board.value[2][1] == self.board.value[2][2] == "O":
+            return True
+
+        elif self.board.value[0][0] == self.board.value[1][0] == self.board.value[2][0] == "X" or self.board.value[0][0] == self.board.value[1][0] == self.board.value[2][0] == "O":
+            return True
+
+        elif self.board.value[0][1] == self.board.value[1][1] == self.board.value[2][1] == "X" or self.board.value[0][1] == self.board.value[1][1] == self.board.value[2][1] == "O":
+            return True
+
+        elif self.board.value[0][2] == self.board.value[1][2] == self.board.value[2][2] == "X" or self.board.value[0][2] == self.board.value[1][2] == self.board.value[2][2] == "O":
+            return True
+
+        elif self.board.value[0][0] == self.board.value[1][1] == self.board.value[2][2] == "X" or self.board.value[0][0] == self.board.value[1][1] == self.board.value[2][2] == "O":
+            return True
+
+        elif self.board.value[0][2] == self.board.value[1][1] == self.board.value[2][0] == "X" or self.board.value[0][2] == self.board.value[1][1] == self.board.value[2][0] == "O":
+            return True
         return False
     def run_game(self):
         print("Hello! starting a new TicTacToe Game")
