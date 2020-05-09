@@ -20,32 +20,40 @@ class Game:
     ## Ways to Win - Given a board return True if game won otherwise False
 # If all values in the row are the same
 # If all values in a column are the same
-    def win(self):
+    def game_won(self):
         print(self.board.value[0][0], self.board.value[0][1])
-        if self.board.value[0][0] == self.board.value[0][1] == self.board.value[0][2] == "X" or self.board.value[0][0] == self.board.value[0][1] == self.board.value[0][2] == "O":
+        	# first row
+        if self.winning_board([[0,0],[0,1],[0,2]]):
             return True
-
-        elif self.board.value[1][0] == self.board.value[1][1] == self.board.value[1][2] == "X" or self.board.value[1][0] == self.board.value[1][1] == self.board.value[1][2] == "O":
+        		# second row
+        elif self.winning_board([[1,0],[1,1],[1,2]]):
             return True
-
-        elif self.board.value[2][0] == self.board.value[2][1] == self.board.value[2][2] == "X" or self.board.value[2][0] == self.board.value[2][1] == self.board.value[2][2] == "O":
+        		# third row
+        elif self.winning_board([[2,0],[2,1],[2,2]]):
             return True
-
-        elif self.board.value[0][0] == self.board.value[1][0] == self.board.value[2][0] == "X" or self.board.value[0][0] == self.board.value[1][0] == self.board.value[2][0] == "O":
+        		# first column
+        elif self.winning_board([[0,0],[1,0],[2,0]]):
             return True
-
-        elif self.board.value[0][1] == self.board.value[1][1] == self.board.value[2][1] == "X" or self.board.value[0][1] == self.board.value[1][1] == self.board.value[2][1] == "O":
+        		# second column
+        elif self.winning_board([[0,1],[1,1],[2,1]]):
             return True
-
-        elif self.board.value[0][2] == self.board.value[1][2] == self.board.value[2][2] == "X" or self.board.value[0][2] == self.board.value[1][2] == self.board.value[2][2] == "O":
+        		# third column
+        elif self.winning_board([[0,2],[1,2],[2,2]]):
             return True
-
-        elif self.board.value[0][0] == self.board.value[1][1] == self.board.value[2][2] == "X" or self.board.value[0][0] == self.board.value[1][1] == self.board.value[2][2] == "O":
+        		# diagonal left to right
+        elif self.winning_board([[0,0],[1,1],[2,2]]):
             return True
-
-        elif self.board.value[0][2] == self.board.value[1][1] == self.board.value[2][0] == "X" or self.board.value[0][2] == self.board.value[1][1] == self.board.value[2][0] == "O":
+        # diagonal right to left
+        elif self.winning_board([[0,2],[1,1],[2,0]]):
             return True
         return False
+
+    def winning_board(self, board_positions):
+        return self.board.value[board_positions[0][0]][board_positions[0][1]] == self.board.value[board_positions[1][0]][board_positions[1][1]] == self.board.value[board_positions[2][0]][board_positions[2][1]] == self.turn
+
+      ### true or false
+
+
     def run_game(self):
         print("Hello! starting a new TicTacToe Game")
         self.board.show_board()

@@ -20,7 +20,7 @@ class GameSpec(unittest.TestCase):
 
         WIN_BY_SECOND_ROW = [
         ["*","*","*"],
-        ["X","X","X"],
+        ["O","O","O"],
         ["*","*","*"]
         ]
 
@@ -55,35 +55,42 @@ class GameSpec(unittest.TestCase):
 
         ## should return false for a blank Board
         game = Game("hudson","tyler")
-        self.assertEqual(game.win(),False)
+        game.turn = "X"
+        self.assertEqual(game.game_won(),False)
 
         ## returns true if you have 3 "X" or "O" in a first row
         game.board.value = WIN_BY_FIRST_ROW
-        self.assertEqual(game.win(),True)
+        game.turn = "X"
+        self.assertEqual(game.game_won(),True)
 
         ## returns true if you have 3 "X" or "O" in a second row
         game.board.value = WIN_BY_SECOND_ROW
-        self.assertEqual(game.win(),True)
+        game.turn = "O"
+        self.assertEqual(game.game_won(),True)
 
         ## returns true if you have 3 "X" or "O" in a first column
         game.board.value = WIN_BY_FIRST_COL
-        self.assertEqual(game.win(),True)
+        game.turn = "X"
+        self.assertEqual(game.game_won(),True)
 
         ## returns true if you have 3 "X" or "O" in a first column
         game.board.value = WIN_BY_SECOND_COL
-        self.assertEqual(game.win(),True)
+        game.turn = "O"
+        self.assertEqual(game.game_won(),True)
 
         ## returns true if you have 3 "X" or "O" in a diagonal starting from the left
         game.board.value = WIN_BY_DIV_LEFT
-        self.assertEqual(game.win(),True)
+        game.turn = "X"
+        self.assertEqual(game.game_won(),True)
 
         ## returns true if you have 3 "X" or "O" in a diagonal starting from the right
         game.board.value = WIN_BY_DIV_RIGHT
-        self.assertEqual(game.win(),True)
+        game.turn = "O"
+        self.assertEqual(game.game_won(),True)
 
         ## returns false when there are no 3s in a row, col, or diagonal
         game.board.value = NO_WIN
-        self.assertEqual(game.win(),False)
+        self.assertEqual(game.game_won(),False)
 
 if __name__ == '__main__':
     unittest.main()
