@@ -60,7 +60,11 @@ class Game:
 
       ### true or false
     def game_over(self):
-        for
+        star_counter  = 0
+        for row in self.board.value:
+            if "*" in row:
+                star_counter += 1
+        return (self.game_won()) or (star_counter == 0)
 
 
     def run_game(self):
@@ -68,7 +72,7 @@ class Game:
         self.board.show_board()
         self.execute_turn()
         print(self.board.show_board())
-        while self.game_won() == False:
+        while self.game_over() == False:
             self.change_turn()
             self.execute_turn()
             print(self.board.show_board())
