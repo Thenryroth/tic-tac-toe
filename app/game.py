@@ -17,6 +17,13 @@ class Game:
         else:
             self.turn = "X"
 
+    def execute_turn(self):
+        print(self.turn +" turn")
+        first_move_row = int(input("Row "))
+        first_move_col = int(input("Column "))
+
+        self.board.mark_spot(first_move_row, first_move_col, self.turn)
+
     ## Ways to Win - Given a board return True if game won otherwise False
 # If all values in the row are the same
 # If all values in a column are the same
@@ -52,14 +59,18 @@ class Game:
         return self.board.value[board_positions[0][0]][board_positions[0][1]] == self.board.value[board_positions[1][0]][board_positions[1][1]] == self.board.value[board_positions[2][0]][board_positions[2][1]] == self.turn
 
       ### true or false
+    def game_over(self):
+        for
 
 
     def run_game(self):
         print("Hello! starting a new TicTacToe Game")
         self.board.show_board()
-        first_move_row = int(input("Row "))
-        first_move_col = int(input("Column "))
-        first_move_value = input("Value ")
-
-        self.board.mark_spot(first_move_row, first_move_col, first_move_value)
-        self.board.show_board()
+        self.execute_turn()
+        print(self.board.show_board())
+        while self.game_won() == False:
+            self.change_turn()
+            self.execute_turn()
+            print(self.board.show_board())
+        if self.game_won():
+            print(f"Player {self.turn}, YOU WON THE GAME")
