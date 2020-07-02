@@ -17,12 +17,14 @@ class Game:
         else:
             self.turn = "X"
 
-    def execute_turn(self):
-        print(self.turn +" turn")
-        first_move_row = int(input("Row "))
-        first_move_col = int(input("Column "))
+    def execute_turn(self, row = None, col = None):
+        print(self.turn + "turn")
+        if row == None:
+            row = int(input("Row "))
+        if col == None:
+            col = int(input("Column "))
+        self.board.mark_spot(row, col, self.turn)
 
-        self.board.mark_spot(first_move_row, first_move_col, self.turn)
 
     ## Ways to Win - Given a board return True if game won otherwise False
 # If all values in the row are the same
@@ -73,7 +75,8 @@ class Game:
             else:
                 self.execute_turn(OPPOSITE_CORNER)
 
-    ## functions we needs
+
+    ## functions we need
     ## GET NUMBER TURN FUNCTION
     ## GET OPPOSITE CORNER FUNCTION
     ## Player class - to determine if player is human or computer```

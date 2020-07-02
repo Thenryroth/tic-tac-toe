@@ -30,6 +30,14 @@ class Board:
                 if cell == "*":
                     turn_number -= 1
         return turn_number
+    def opposite_corner(self,row,col):
+        if row == 0 and col == 0:
+            OPPOSITE_CORNER= (2,2)
+        elif row == 2 and col == 2:
+            OPPOSITE_CORNER= (0,0)
+        elif row == 0 and col == 2 or row == 2 and col == 0::
+            OPPOSITE_CORNER= (col,row)
+        return OPPOSITE_CORNER
 
 # Given a Board, a position, and a value(x, or O) puts the
 #value at that position on the board
