@@ -66,6 +66,17 @@ class Game:
                 star_counter += 1
         return (self.game_won()) or (star_counter == 0)
 
+    def computer_move(self):
+        if turn == 3:
+            if player2 in EDGES:
+                self.execute_turn(CORNERS)
+            else:
+                self.execute_turn(OPPOSITE_CORNER)
+
+    ## functions we needs
+    ## GET NUMBER TURN FUNCTION
+    ## GET OPPOSITE CORNER FUNCTION
+    ## Player class - to determine if player is human or computer```
 
     def run_game(self):
         print("Hello! starting a new TicTacToe Game")

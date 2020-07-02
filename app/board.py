@@ -23,6 +23,14 @@ class Board:
         self.value[row][col]= value
         return self.value
 
+    def turn(self):
+        turn_number = 10
+        for row in self.value:
+            for cell in row:
+                if cell == "*":
+                    turn_number -= 1
+        return turn_number
+
 # Given a Board, a position, and a value(x, or O) puts the
 #value at that position on the board
 # Mark position 0,0 with an X

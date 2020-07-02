@@ -9,7 +9,15 @@ class GameSpec(unittest.TestCase):
         game.change_turn()
         self.assertEqual(game.turn,"O")
 
-
+    def  test_turn(self):
+        game = Game("hudson","tyler")
+        board = [
+        ["X","X","X"],
+        ["*","*","*"],
+        ["*","*","*"]
+        ]
+        game.board.value = board
+        self.assertEqual(game.board.turn(),4)
 
     def test_won(self):
         WIN_BY_FIRST_ROW = [
