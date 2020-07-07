@@ -4,6 +4,8 @@
 from .board import Board
 
 class Game:
+    CORNERS = [[0,0],[2,0],[2,2],[0,2]]
+    EDGES = [[0,1],[2,1],[1,0],[1,2]]
 
     def __init__(self,player1,player2):
         self.player1 = player1
@@ -20,7 +22,7 @@ class Game:
     def execute_turn(self, row = None, col = None):
         print(self.turn + "turn")
         if row == None:
-            row = int(input("Row "))
+            row = int(input("Row"))
         if col == None:
             col = int(input("Column "))
         self.board.mark_spot(row, col, self.turn)
@@ -71,8 +73,9 @@ class Game:
     def computer_move(self):
         if turn == 3:
             if player2 in EDGES:
-                self.execute_turn(CORNERS)
+                self.execute_turn(CORNERS[0][0],CORNERS[0][1])
             else:
+                
                 self.execute_turn(OPPOSITE_CORNER)
 
 

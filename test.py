@@ -9,7 +9,18 @@ class GameSpec(unittest.TestCase):
         game.change_turn()
         self.assertEqual(game.turn,"O")
 
-    def  test_turn(self):
+    def test_find_corner(self):
+        game = Game("hudson","tyler")
+        board = [
+        ["X","X","*"],
+        ["*","*","*"],
+        ["*","*","*"]
+        ]
+        game.board.value = board
+        self.assertEqual(game.board.find_corner("X",Game.CORNERS),[0,0])
+
+
+    def test_turn(self):
         game = Game("hudson","tyler")
         board = [
         ["X","X","X"],
@@ -18,6 +29,16 @@ class GameSpec(unittest.TestCase):
         ]
         game.board.value = board
         self.assertEqual(game.board.turn(),4)
+
+    def test_opposite_corner(self):
+        game = Game("hudson","tyler")
+        game.board.value = [
+        ["X","X","X"],
+        ["*","*","*"],
+        ["*","*","*"]
+        ]
+        game.board.opposite_corner(0,0)
+        self.assertEqual(game.board.opposite_corner(0,0),(2,2))
 
     def test_won(self):
         WIN_BY_FIRST_ROW = [

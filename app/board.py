@@ -35,9 +35,16 @@ class Board:
             OPPOSITE_CORNER= (2,2)
         elif row == 2 and col == 2:
             OPPOSITE_CORNER= (0,0)
-        elif row == 0 and col == 2 or row == 2 and col == 0::
+        elif row == 0 and col == 2 or row == 2 and col == 0:
             OPPOSITE_CORNER= (col,row)
         return OPPOSITE_CORNER
+
+    def find_corner(self,player,corners):
+        for corner in corners:
+            if player == self.value[corner[0]][corner[1]]:
+                return corner
+
+
 
 # Given a Board, a position, and a value(x, or O) puts the
 #value at that position on the board
